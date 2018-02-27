@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fieldset name="privacylinks" label="privacylinks">
+		<field
+			type="language"
+			name="target_language"
+			client="site"
+			label="PLG_COOKIENOTICE_FIELD_TARGET_LANGUAGE_LABEL"
+			description="PLG_COOKIENOTICE_FIELD_TARGET_LANGUAGE_DESC"
+		>
+			<option value="*">JALL</option>
+		</field>
+		<field
+			type="menuitem"
+			name="target_menuitem"
+			published="1"
+			label="PLG_COOKIENOTICE_FIELD_TARGET_ITEM_LABEL"
+			description="PLG_COOKIENOTICE_FIELD_TARGET_ITEM_DESC"
+		>
+			<option	value="">JDEFAULT</option>
+		</field>
+		<field
+			type="textarea"
+			name="text_override"
+			class="input-xlarge"
+			rows="5"
+			label="PLG_COOKIENOTICE_FIELD_TEXT_OVERRIDE_LABEL"
+			description="PLG_COOKIENOTICE_FIELD_TEXT_OVERRIDE_DESC"
+		/>
+    </fieldset>
+</form>

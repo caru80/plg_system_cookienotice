@@ -1,0 +1,47 @@
+@msg-color-cookie: 		#444444;
+@txt-color-cookie:		#dddddd;
+
+.cookie-notice{
+
+	position: fixed;
+	z-index: 5;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+
+	overflow: hidden;
+	opacity: 0;
+
+	-webkit-transition: opacity 0.3s linear;
+			transition: opacity 0.3s linear;
+
+	&.visible{
+		opacity: 1;
+	}
+
+	font-size: 0.9em;
+	text-align: center;
+	background-color: @msg-color-cookie;
+	color: @txt-color-cookie;
+
+	span{ // jeweils 1 als Container für Text und Buttons
+		display: inline-block;
+		margin: 0 0.75em;
+		padding: 0.75em 0;
+		}
+
+	.btn{ // 1 x Schließen, 1x Mehr Info
+		margin: 0 0.25em;
+		font-size: 0.9em;
+		.button-variant(@txt-color-cookie; darken(@msg-color-cookie, 7%); darken(@msg-color-cookie, 10%));
+	}
+}
+
+@media(min-width: @screen-sm-min){
+	.cookie-notice{
+		/**
+			Etwas mehr padding ab kleinen Displays.
+		*/
+		padding: 0.4em 0;
+	}
+}

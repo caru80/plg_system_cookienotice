@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="system" method="upgrade">
+	<name>Cookiehinweis</name>
+	<author>Carsten Ruppert – HEAD. MARKETING GmbH</author>
+	<creationDate>2018-02-27</creationDate>
+	<copyright>Copyright (C) 2018 HEAD. MARKETING GmbH</copyright>
+	<license></license>
+	<authorEmail>webmaster@headmarketing.de</authorEmail>
+	<authorUrl>www.headmarketing.de</authorUrl>
+	<version>0.1.0</version>
+	<description>Zeige den Cookiehinweis</description>
+	<files>
+		<filename plugin="cookienotice">cookienotice.php</filename>
+		<filename>index.html</filename>
+		<folder>forms</folder>
+		<folder>language</folder>
+		<folder>tmpl</folder>
+	</files>
+	<languages>
+		<language tag="de-DE">language/de-DE.plg_system_cookienotice.ini</language>
+		<language tag="de-DE">language/de-DE.plg_system_cookienotice.sys.ini</language>
+	</languages>
+	<media destination="plg_cookienotice" folder="media">
+		<filename>index.html</filename>
+		<folder>js</folder>
+		<folder>less</folder>
+		<folder>css</folder>
+	</media>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<!-- Vorerst gesperrt
+				<field
+					name="cookiename"
+					type="text"
+				/>
+				-->
+				<field
+					name="loadcssfile"
+					type="radio"
+					default="1"
+					class="btn-group"
+					label="PLG_COOKIENOTICE_FIELD_LOADCSSFILE_LABEL"
+					description="PLG_COOKIENOTICE_FIELD_LOADCSSFILE_DESC"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="privacy-links"
+					type="subform"
+					formsource="plugins/system/cookienotice/forms/privacylinks.xml"
+					multiple="true"
+					layout="joomla.form.field.subform.repeatable-table"
+					buttons="add,remove"
+		    		label="PLG_COOKIENOTICE_FIELD_PRIVACY_LINKS_LABEL"
+					description="PLG_COOKIENOTICE_FIELD_PRIVACY_LINKS_DESC"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
