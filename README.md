@@ -3,9 +3,9 @@ plg_system_cookienotice
 
 ![Screenshot](/docs/images/screenshot.png?raw=true "Screenshot")
 
-## Einen Template Override erstellen:
+## Ein Template-Override erstellen:
 
-1. Ordner erstellen: /templates/head/html/plg_system_cookienotice
+1. Ordner erstellen: /templates/DEIN_TEMPLATE/html/plg_system_cookienotice
 2. Datei /plugins/system/cookienotice/tmpl/default.php in den neuen Ordner kopieren
 3. Neue Datei anpassen.
 
