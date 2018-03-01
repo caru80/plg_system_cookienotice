@@ -3,19 +3,19 @@ plg_system_cookienotice
 
 ![Screenshot](/docs/images/screenshot.png?raw=true "Screenshot")
 
-##Einen Template Override erstellen:
+## Einen Template Override erstellen:
 
 1. Ordner erstellen: /templates/head/html/plg_system_cookienotice
 2. Datei /plugins/system/cookienotice/tmpl/default.php in den neuen Ordner kopieren
 3. Neue Datei anpassen.
 
-##CSS Override:
+## CSS Override:
 
 1. „Stylesheet laden” in den Plugineinstellungen ausschalten.
 2. Datei /media/plg_cookienotice/less/cookienotice.less in dein Template kopieren und einbinden.
 3. CSS anpassen.
 
-##Sprachoverride – Für Fremdsprachen
+## Sprachoverride – Für Fremdsprachen
 
 Gehe zu: Administrator > Erweiterungen > Sprachen > Overrides
 
