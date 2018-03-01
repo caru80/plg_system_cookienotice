@@ -20,5 +20,6 @@ plg_system_cookienotice
 Gehe zu: Administrator > Erweiterungen > Sprachen > Overrides
 
 PLG_COOKIENOTICE_FRONT_TEXT = Standardtext
+
 PLG_COOKIENOTICE_FRONT_BTN_OK = Knopf „OK”
 PLG_COOKIENOTICE_FRONT_BTN_INFO = Knopf „Mehr Infos”
