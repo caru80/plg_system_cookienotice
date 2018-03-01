@@ -15,10 +15,10 @@
 		window.cookieNotice.init({cookiename : '<?php echo $this->cookieName;?>'});
 
 		var message = '<?php echo $this->textOverride != '' ? $this->textOverride : JText::_('PLG_COOKIENOTICE_FRONT_TEXT');?>',
-			info	= <?php if(isset($this->privacyLink)) : ?>'<a class="btn" href="<?php echo $this->privacyLink;?>"><?php echo JText::_('PLG_COOKIENOTICE_FRONT_BTN_INFO');?></a>'<?php else : ?>''<?php endif; ?>;
+			info	= <?php if(!empty($this->privacyLink)) : ?>'<a class="btn" href="<?php echo $this->privacyLink;?>"><?php echo JText::_('PLG_COOKIENOTICE_FRONT_BTN_INFO');?></a>'<?php else : ?>''<?php endif; ?>;
 
 		window.cookieNotice.show({
-			text : '<div id="cookienotice" class="cookie-notice">' +
+			text : '<div id="plg-cookienotice" class="plg-cookienotice">' +
 						'<span>' + message + '</span>' +
 						'<span>' +
 							'<a tabindex="0" class="btn ' + window.cookieNotice.options.css.button + '"><?php echo JText::_('PLG_COOKIENOTICE_FRONT_BTN_OK');?></a>' +

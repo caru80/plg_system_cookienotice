@@ -1,55 +1,53 @@
+.plg-cookienotice {
+	position: fixed;
+	z-index: 1000;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	overflow: hidden;
+	opacity: 0;
+	-webkit-transition: opacity 0.3s linear;
+	transition: opacity 0.3s linear;
+	font-size: 0.9em;
+	text-align: center;
+	background-color: #444444;
+	color: #dddddd;
+}
 @media (min-width: 768px) {
-  .cookie-notice {
-    padding: 0.2em 0;
-  }
+	.plg-cookienotice {
+		padding: 0.2em 0;
+	}
 }
-.cookie-notice {
-  position: fixed;
-  z-index: 100;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  opacity: 0;
-  -webkit-transition: opacity 0.3s linear;
-  transition: opacity 0.3s linear;
-  font-size: 0.9em;
-  text-align: center;
-  background-color: #444444;
-  color: #dddddd;
+.plg-cookienotice.visible {
+	opacity: 1;
 }
-.cookie-notice.visible {
-  opacity: 1;
+.plg-cookienotice span {
+	display: inline-block;
+	margin: 0 0.75em;
+	padding: 0.75em 0;
 }
-.cookie-notice span {
-  display: inline-block;
-  margin: 0 0.75em;
-  padding: 0.75em 0;
+.plg-cookienotice .btn {
+	margin: 0.2em 0.25em;
+	font-size: 0.9em;
+	color: #dddddd;
+	background-color: #323232;
+	border-color: #2b2b2b;
 }
-.cookie-notice .btn {
-  margin: 0.2em 0.25em;
-  font-size: 0.9em;
-  color: #dddddd;
-  background-color: #323232;
-  border-color: #2b2b2b;
+.plg-cookienotice .btn:hover,
+.plg-cookienotice .btn:active,
+.plg-cookienotice .btn:focus{
+	background-color: #191919;
+	border-color: #0c0c0c;
 }
-.cookie-notice .btn:focus {
-  color: #dddddd;
-  background-color: #191919;
-  border-color: #000000;
+.plg-cookienotice .btn:focus {
+	border-color: #000000;
 }
-.cookie-notice .btn:hover,
-.cookie-notice .btn:active {
-  color: #dddddd;
-  background-color: #191919;
-  border-color: #0c0c0c;
+
+.plg-cookienotice .btn:active {
+	background-image: none;
 }
-.cookie-notice .btn:active:hover,
-.cookie-notice .btn:active:focus {
-  color: #dddddd;
-  background-color: #070707;
-  border-color: #000000;
-}
-.cookie-notice .btn:active {
-  background-image: none;
+.plg-cookienotice .btn:active:hover,
+.plg-cookienotice .btn:active:focus {
+	background-color: #070707;
+	border-color: #000000;
 }

@@ -41,7 +41,7 @@ class plgSystemCookienotice extends JPlugin
 
 		if((bool)$this->params->get('loadcssfile', true))
 		{
-			$doc->addStylesheet('media/plg_cookienotice/css/plgcookienotice.css');
+			$doc->addStylesheet('media/plg_cookienotice/css/plgcookienotice.min.css');
 		}
 
 		return;
@@ -83,7 +83,6 @@ class plgSystemCookienotice extends JPlugin
 		if(empty($this->html)) return;
 
 		$buffer = JResponse::getBody();
-
 		$buffer = str_replace("</body>", $this->html . "\n</body>", $buffer);
 
 		JResponse::setBody( $buffer );

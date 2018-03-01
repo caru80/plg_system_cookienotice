@@ -48,7 +48,7 @@
 
 			if(trigger.length)
 			{
-				trigger.data('app-message', msg).on('click.cookienotic', function(ev)
+				trigger.data('app-message', msg).on('click.cookienotice', function(ev)
 				{
 					ev.preventDefault();
 					let msg = trigger.data('app-message');
