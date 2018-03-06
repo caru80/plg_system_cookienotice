@@ -2,6 +2,7 @@
 defined( '_JEXEC' ) or die();
 
 jimport('joomla.plugin.plugin');
+jimport('joomla.filesystem.file');
 
 class plgSystemCookienotice extends JPlugin
 {
@@ -35,13 +36,24 @@ class plgSystemCookienotice extends JPlugin
 
 	private function insertAssets()
 	{
-		$doc = JFactory::getApplication()->getDocument();
+		$app = JFactory::getApplication();
+		$doc = $app->getDocument();
 
 		$doc->addScript('media/plg_cookienotice/js/plgcookienotice.min.js');
 
 		if((bool)$this->params->get('loadcssfile', true))
 		{
-			$doc->addStylesheet('media/plg_cookienotice/css/plgcookienotice.min.css');
+
+			if(JFile::exists(JPATH_ROOT . DIRECTORY_SEPARATOR . "templates" . DIRECTORY_SEPARATOR . $app->getTemplate() . DIRECTORY_SEPARATOR . "html" . DIRECTORY_SEPARATOR . "plg_system_cookienotice" . DIRECTORY_SEPARATOR . "plgcookienotice.css"))
+			{
+				// CSS Override
+				$doc->addStylesheet("templates/" . $app->getTemplate() . "/html/plg_system_cookienotice/plgcookienotice.css");
+			}
+			else
+			{
+				// Plugin CSS
+				$doc->addStylesheet('media/plg_cookienotice/css/plgcookienotice.min.css');
+			}
 		}
 
 		return;
