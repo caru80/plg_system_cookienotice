@@ -16,22 +16,15 @@ class plgSystemCookienotice extends JPlugin
 
 	public function __construct( &$subject, $params )
 	{
+		if(JFactory::getApplication()->isAdmin()) return;
+
 		parent::__construct( $subject, $params );
 
-		$this->cookieName 	= $this->params->get('cookiename','cookienotice');
-		$this->config 		= $this->params->get('privacy-links',null);
+		$this->cookieName = $this->params->get('cookiename','cookienotice');
 
-		if($this->config)
-		{
-			foreach($this->config as $i => $config)
-			{
-				if($config->target_language === JFactory::getLanguage()->getTag())
-				{
-					$this->config = $config;
-					break;
-				}
-			}
-		}
+		$this->getConfiguration();
+
+		return;
 	}
 
 	private function insertAssets()
@@ -59,6 +52,34 @@ class plgSystemCookienotice extends JPlugin
 		return;
 	}
 
+	private function getConfiguration()
+	{
+		$language 		= JFactory::getLanguage()->getTag();
+		$this->config 	= $this->params->get('privacy-links',null);
+
+		if($this->config)
+		{
+			$this->config = (array)$this->config;
+
+			foreach($this->config as $i => $configSet)
+			{
+				$this->config[$configSet->target_language] = $configSet;
+			}
+		}
+
+		switch(isset($this->config[$language]))
+		{
+			case true :
+				$this->config = $this->config[$language];
+			break;
+			default :
+				$this->config = isset($this->config["*"]) ? $this->config["*"] : false;
+		}
+
+		return;
+	}
+
+
 	private function getPrivacyStatementLink()
 	{
 		$item = JFactory::getApplication()->getMenu()->getItem($this->config->target_menuitem);
@@ -84,10 +105,13 @@ class plgSystemCookienotice extends JPlugin
 		$this->textOverride = $this->config->text_override;
 
 		$path = JPluginHelper::getLayoutPath('system', 'cookienotice');
+
 		// Rendere den Cookiehinweis
 		ob_start();
 		include $path;
 		$this->html = ob_get_clean();
+
+		return;
 	}
 
 	public function onAfterRender()
@@ -98,6 +122,8 @@ class plgSystemCookienotice extends JPlugin
 		$buffer = str_replace("</body>", $this->html . "\n</body>", $buffer);
 
 		JResponse::setBody( $buffer );
+
+		return;
 	}
 
 }
