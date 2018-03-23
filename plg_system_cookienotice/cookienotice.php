@@ -22,8 +22,6 @@ class plgSystemCookienotice extends JPlugin
 
 		$this->cookieName = $this->params->get('cookiename','cookienotice');
 
-		$this->getConfiguration();
-
 		return;
 	}
 
@@ -52,6 +50,10 @@ class plgSystemCookienotice extends JPlugin
 		return;
 	}
 
+	/**
+		Hole Config für Anzeigesprache, oder keine, wenn Sprache nicht Konfiguriert.
+		Darf nicht im Constructor aufgeruden werden, weil es sonst von JLanguage die Standardsprache bekommt!
+	*/
 	private function getConfiguration()
 	{
 		$language 		= JFactory::getLanguage()->getTag();
@@ -98,18 +100,23 @@ class plgSystemCookienotice extends JPlugin
 
 	public function onBeforeRender()
 	{
-		if(!$this->config || JFactory::getApplication()->input->cookie->get($this->cookieName, false) || JFactory::getApplication()->isAdmin()) return;
+		if(JFactory::getApplication()->input->cookie->get($this->cookieName, false) || JFactory::getApplication()->isAdmin()) return;
 
-		$this->insertAssets();
-		$this->getPrivacyStatementLink();
-		$this->textOverride = $this->config->text_override;
+		$this->getConfiguration();
 
-		$path = JPluginHelper::getLayoutPath('system', 'cookienotice');
+		if($this->config)
+		{
+			$this->insertAssets();
+			$this->getPrivacyStatementLink();
+			$this->textOverride = $this->config->text_override;
 
-		// Rendere den Cookiehinweis
-		ob_start();
-		include $path;
-		$this->html = ob_get_clean();
+			$path = JPluginHelper::getLayoutPath('system', 'cookienotice');
+
+			// Rendere den Cookiehinweis
+			ob_start();
+			include $path;
+			$this->html = ob_get_clean();
+		}
 
 		return;
 	}
@@ -120,7 +127,6 @@ class plgSystemCookienotice extends JPlugin
 
 		$buffer = JResponse::getBody();
 		$buffer = str_replace("</body>", $this->html . "\n</body>", $buffer);
-
 		JResponse::setBody( $buffer );
 
 		return;
