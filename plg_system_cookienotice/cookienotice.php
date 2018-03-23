@@ -102,8 +102,7 @@ class plgSystemCookienotice extends JPlugin
 	{
 		if(JFactory::getApplication()->input->cookie->get($this->cookieName, false) || JFactory::getApplication()->isAdmin()) return;
 
-		$this->getConfiguration();
-
+		$this->getConfiguration()
 		if($this->config)
 		{
 			$this->insertAssets();
