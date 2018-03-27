@@ -12,7 +12,7 @@ plg_system_cookienotice
 ## CSS Override:
 
 1. Ordner erstellen: /templates/DEIN_TEMPLATE/html/plg_system_cookienotice
-2. Kopiere die Datei /media/plg_cookienotice/css/plgcookienotice.css in den neun Ordner kopieren.
+2. Kopiere die Datei /media/plg_cookienotice/css/plgcookienotice.css in den neuen Ordner.
 3. Passe das Stylesheet an.
 
 
