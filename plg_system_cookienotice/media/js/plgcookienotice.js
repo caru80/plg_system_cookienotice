@@ -6,8 +6,9 @@
 
 		defaults : {
 			stage			: 'body',
-			css 			: {visible : 'visible', button : 'msg-close'},
-			cookiename 		: 'cookienotice'
+			css 			: {visible : 'visible', button : 'msg-close', msgclass : 'plg-cookienotice'},
+			cookiename 		: 'cookienotice',
+			html 			: ''
 		},
 
 		init : function( options )
@@ -25,55 +26,69 @@
 		},
 
 		/*
-			Entfernt eine Nachricht von this.options.stage
+			Entfernt alle Cookiehinweise
 		*/
-		removeMessage : function(msg)
+		removeMessages : function()
 		{
-			let self 	= this,
-				removed = false; // Evtl. Chromes doppeltes Event-Abfeuern fixen
+			let messages 	= $('.'+this.options.css.msgclass),	// Alle Cookiehinweise
+				time 		= 0, // Transition duration
+				m;	// Ein Cookiehinweis
 
-			document.cookie = this.options.cookiename + "=1; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
 
-			$(msg).one('transitionend webkitTransitionEnd oTransitionEnd', function() {
-				if(removed) return;
-				$(this).remove();
-				removed = true;
-			}).removeClass(this.options.css.visible);
+			let afterTransition = function()
+			{
+				this.remove();
+			};
+
+			for(let i = 0, len = messages.length; i < len; i++)
+			{
+				m = messages.eq(i);
+
+				m.css('transition-duration').split(',').forEach(function(dur)
+				{
+					dur = parseFloat(dur);
+					time = dur > time ? dur : time;
+				});
+
+				if(time > 0)
+				{
+					window.setTimeout(
+						afterTransition.bind(m),
+						time * 1000
+					);
+					m.removeClass(this.options.css.visible);
+				}
+				else
+				{
+					m.remove();
+				}
+			}
 		},
 
-		setTrigger : function( msg )
+		setTrigger : function()
 		{
 			let self 	= this,
-				trigger = msg.find('.' + this.options.css.button);
+				trigger = this.msg.find('.' + this.options.css.button);
 
 			if(trigger.length)
 			{
-				trigger.data('app-message', msg).on('click.cookienotice', function(ev)
+				trigger.on('click.cookienotice', function(ev)
 				{
 					ev.preventDefault();
-					let msg = trigger.data('app-message');
-					self.removeMessage( msg );
+					document.cookie = self.options.cookiename + "=1; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
+					self.removeMessages();
 					return false;
 				});
 			}
 		},
 
-		/*
-			m{
-				text 					: String Text
-			}
-		*/
-		show : function( m )
+		show : function(html)
 		{
-			if(m.text == '') return;
-
-			var $msg = $(m.text);
-
-			this.stage.append($msg);
-			$msg.get(0).offsetWidth; // Browser zwingen das Ding zu rendern, ganz wichtig!
-
-			this.setTrigger($msg);
-			$msg.addClass(this.options.css.visible);
+			this.msg = $(html);
+			this.stage.append(this.msg);
+			this.msg.get(0).offsetWidth;
+			this.msg.addClass(this.options.css.visible);
+			this.setTrigger();
 		}
 	}
 })(jQuery);
