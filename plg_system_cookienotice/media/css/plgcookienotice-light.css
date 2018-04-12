@@ -8,10 +8,11 @@
 	opacity: 0;
 	-webkit-transition: opacity 0.3s linear;
 	transition: opacity 0.3s linear;
-	font-size: 0.9em;
+	font-size: 14px;
 	text-align: center;
-	background-color: #444444;
-	color: #dddddd;
+	background-color: #a5a5a5;
+	color: #ffffff;
+	border-top: 1px solid #959595;
 }
 @media (min-width: 768px) {
 	.plg-cookienotice {
@@ -23,24 +24,29 @@
 }
 .plg-cookienotice span {
 	display: inline-block;
-	margin: 0 0.75em;
-	padding: 0.75em 0;
+	margin: 0 0.5em;
+	padding: 0.5em 0;
+}
+@media (max-width: 1199px) {
+	.plg-cookienotice span + span{
+		padding-top: 0px;
+	}
 }
 .plg-cookienotice .btn {
 	margin: 0.2em 0.25em;
 	font-size: 0.9em;
-	color: #dddddd;
-	background-color: #323232;
-	border-color: #2b2b2b;
+	color: #ffffff;
+	background-color: #959595;
+	border-color: #757575;
 }
 .plg-cookienotice .btn:hover,
 .plg-cookienotice .btn:active,
 .plg-cookienotice .btn:focus{
-	background-color: #191919;
-	border-color: #0c0c0c;
+	background-color: #757575;
+	border-color: #555555;
 }
 .plg-cookienotice .btn:focus {
-	border-color: #000000;
+	border-color: #555555;
 }
 
 .plg-cookienotice .btn:active {

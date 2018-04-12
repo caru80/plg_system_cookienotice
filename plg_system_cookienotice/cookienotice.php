@@ -43,7 +43,8 @@ class plgSystemCookienotice extends JPlugin
 			else
 			{
 				// Plugin CSS
-				$doc->addStylesheet('media/plg_cookienotice/css/plgcookienotice.min.css');
+				$theme = $this->params->get('theme','dark');
+				$doc->addStylesheet('media/plg_cookienotice/css/plgcookienotice-'.$theme.'.min.css');
 			}
 		}
 

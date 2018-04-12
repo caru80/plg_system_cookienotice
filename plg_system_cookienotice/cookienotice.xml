@@ -2,12 +2,12 @@
 <extension version="3.0" type="plugin" group="system" method="upgrade">
 	<name>Cookiehinweis</name>
 	<author>Carsten Ruppert – HEAD. MARKETING GmbH</author>
-	<creationDate>2018-02-27</creationDate>
+	<creationDate>2018-04-12</creationDate>
 	<copyright>Copyright (C) 2018 HEAD. MARKETING GmbH</copyright>
 	<license></license>
 	<authorEmail>webmaster@headmarketing.de</authorEmail>
 	<authorUrl>www.headmarketing.de</authorUrl>
-	<version>0.5.0</version>
+	<version>0.6.0</version>
 	<description>Zeige den Cookiehinweis</description>
 	<files>
 		<filename plugin="cookienotice">cookienotice.php</filename>
@@ -19,6 +19,8 @@
 	<languages>
 		<language tag="de-DE">language/de-DE.plg_system_cookienotice.ini</language>
 		<language tag="de-DE">language/de-DE.plg_system_cookienotice.sys.ini</language>
+		<language tag="en-GB">language/en-GB.plg_system_cookienotice.ini</language>
+		<language tag="en-GB">language/en-GB.plg_system_cookienotice.sys.ini</language>
 	</languages>
 	<media destination="plg_cookienotice" folder="media">
 		<filename>index.html</filename>
@@ -45,6 +47,16 @@
 				>
 					<option value="0">JNO</option>
 					<option value="1">JYES</option>
+				</field>
+				<field
+					name="theme"
+					type="list"
+					default="dark"
+					label="PLG_COOKIENOTICE_FIELD_THEME_LABEL"
+					description="PLG_COOKIENOTICE_FIELD_THEME_DESC"
+				>
+					<option value="dark">PLG_COOKIENOTICE_FIELD_THEME_OPT_DARK</option>
+					<option value="light">PLG_COOKIENOTICE_FIELD_THEME_OPT_LIGHT</option>
 				</field>
 
 				<field
